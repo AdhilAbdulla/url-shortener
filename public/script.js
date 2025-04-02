@@ -1,9 +1,7 @@
 async function shortenUrl() {
     const longUrl = document.getElementById("longUrl").value;
-    const resultInput = document.getElementById("shortUrl");
-
     if (!longUrl) {
-        alert("Please enter a valid URL.");
+        alert("Please enter a URL");
         return;
     }
 
@@ -14,14 +12,18 @@ async function shortenUrl() {
             body: JSON.stringify({ longUrl }),
         });
 
-        if (!response.ok) throw new Error("Failed to shorten URL");
-
         const data = await response.json();
-        resultInput.value = data.shortUrl;
+        if (data.shortUrl) {
+            document.getElementById("shortUrl").value = data.shortUrl;
+        } else {
+            alert("Error shortening URL");
+        }
     } catch (error) {
-        alert("Something went wrong. Please try again later.");
+        console.error("Error:", error);
+        alert("Something went wrong!");
     }
 }
+
 
 function copyUrl() {
     const resultInput = document.getElementById("shortUrl");
