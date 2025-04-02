@@ -1,33 +1,28 @@
-async function shortenUrl() {
-    const longUrl = document.getElementById("longUrl").value;
+function shortenUrl() {
+    let longUrl = document.getElementById("longUrl").value;
     if (!longUrl) {
-        alert("Please enter a URL");
+        alert("Please enter a valid URL");
         return;
     }
-
-    try {
-        const response = await fetch("/api/shorten", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ longUrl }),
-        });
-
-        const data = await response.json();
+    fetch("/shorten", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ longUrl }),
+    })
+    .then(response => response.json())
+    .then(data => {
         if (data.shortUrl) {
             document.getElementById("shortUrl").value = data.shortUrl;
         } else {
             alert("Error shortening URL");
         }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong!");
-    }
+    })
+    .catch(error => console.error("Error:", error));
 }
 
-
 function copyUrl() {
-    const resultInput = document.getElementById("shortUrl");
-    resultInput.select();
+    let shortUrl = document.getElementById("shortUrl");
+    shortUrl.select();
     document.execCommand("copy");
-    alert("Copied!");
+    alert("Copied to clipboard!");
 }
