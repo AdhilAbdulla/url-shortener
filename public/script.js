@@ -1,4 +1,4 @@
-const BASE_URL = "https://url-shortener-jerryy.vercel.app/"; // Replace this
+const BASE_URL = "https://url-shortener-jerryy.vercel.app"; // Your backend URL
 
 function shortenUrl() {
     let longUrl = document.getElementById("longUrl").value;
@@ -7,7 +7,7 @@ function shortenUrl() {
         return;
     }
 
-    fetch(`${BASE_URL}/api/shorten`, {
+    fetch(`${BASE_URL}/api/shorten`, { // ✅ Remove extra slash
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ longUrl }),
