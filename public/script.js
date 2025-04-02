@@ -1,10 +1,13 @@
+const BASE_URL = "https://your-vercel-deployment-url.vercel.app"; // Update this with your actual Vercel deployment URL
+
 function shortenUrl() {
     let longUrl = document.getElementById("longUrl").value;
     if (!longUrl) {
         alert("Please enter a valid URL");
         return;
     }
-    fetch("/shorten", {
+
+    fetch(`${BASE_URL}/api/shorten`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ longUrl }),
@@ -17,7 +20,10 @@ function shortenUrl() {
             alert("Error shortening URL");
         }
     })
-    .catch(error => console.error("Error:", error));
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+    });
 }
 
 function copyUrl() {
