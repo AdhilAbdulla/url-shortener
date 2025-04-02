@@ -1,0 +1,26 @@
+{
+    "name": "url-shortener",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "glob": "^9.3.5",
+        "mongoose": "^7.8.6",
+        "nanoid": "^5.1.5",
+        "shortid": "^2.2.17",
+        "uuid": "^11.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.9"
+    },
+    "description": "A simple URL shortener API built with Node.js, Express, and MongoDB.",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
