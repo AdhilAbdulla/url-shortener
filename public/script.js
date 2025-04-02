@@ -1,4 +1,4 @@
-const BASE_URL = "https://your-backend-vercel-url.vercel.app"; // Replace this
+const BASE_URL = "https://url-shortener-jerryy.vercel.app/"; // Replace this
 
 function shortenUrl() {
     let longUrl = document.getElementById("longUrl").value;
