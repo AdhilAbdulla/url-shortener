@@ -4,22 +4,16 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
 dotenv.config();
-const app = express();
-
 connectDB();
 
-// ✅ CORS CONFIGURATION (Allow frontend domain)
-app.use(cors({
-    origin: "https://url-shortener-du3dqcjih-jerryy.vercel.app", // Your frontend domain
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
-}));
+const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));  // Serve frontend files
 
-// Routes
 const urlRoutes = require("./routes/urlRoutes");
-app.use("/api", urlRoutes); // ✅ Ensure /api prefix is added
+app.use("/api", urlRoutes);  // API Route Prefix
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
