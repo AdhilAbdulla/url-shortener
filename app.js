@@ -8,8 +8,12 @@ const app = express();
 
 connectDB();
 
-// ✅ Allow CORS from all origins (Fixes your issue)
-app.use(cors({ origin: "*" }));
+// ✅ Correct CORS configuration
+app.use(cors({
+    origin: "*", // You can replace "*" with your frontend URL for security
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
 
 app.use(express.json());
 

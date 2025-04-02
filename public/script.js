@@ -1,4 +1,4 @@
-const BASE_URL = "https://your-vercel-deployment-url.vercel.app"; // Update this with your actual Vercel deployment URL
+const BASE_URL = "https://your-backend-vercel-url.vercel.app"; // Replace this
 
 function shortenUrl() {
     let longUrl = document.getElementById("longUrl").value;
