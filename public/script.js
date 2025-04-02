@@ -1,15 +1,17 @@
+const API_URL = "https://url-shortener-gmbzd75sl-jerryy.vercel.app/api";
+
 async function shortenUrl() {
     const longUrl = document.getElementById("longUrl").value;
     if (!longUrl) {
         alert("Please enter a valid URL");
         return;
     }
-
+    
     try {
-        const response = await fetch("/api/shorten", {
+        const response = await fetch(`${API_URL}/shorten`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ longUrl }),
+            body: JSON.stringify({ longUrl })
         });
 
         const data = await response.json();
