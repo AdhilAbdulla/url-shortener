@@ -4,7 +4,6 @@ const Url = require("../models/Url");
 
 const router = express.Router();
 
-// Shorten URL
 router.post("/shorten", async (req, res) => {
   const { longUrl } = req.body;
 
@@ -17,19 +16,18 @@ router.post("/shorten", async (req, res) => {
     const newUrl = new Url({ longUrl, shortUrl });
     await newUrl.save();
 
-    res.json({ shortUrl: `${process.env.BASE_URL}/${shortUrl}` });
+    res.json({ success: true, shortUrl: `${process.env.BASE_URL}/${shortUrl}` });
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
 });
 
-// Redirect Short URL
 router.get("/:shortUrl", async (req, res) => {
   try {
     const url = await Url.findOne({ shortUrl: req.params.shortUrl });
 
     if (url) {
-      return res.redirect(url.longUrl);
+      return res.json({ success: true, longUrl: url.longUrl });
     } else {
       return res.status(404).json({ error: "URL not found" });
     }
