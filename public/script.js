@@ -7,7 +7,7 @@ async function shortenUrl() {
     }
     
     try {
-        const url = `${process.env.BASE_URL}/api/shorten`;
+        const url = `https://url-shortener-jerryy.vercel.app/api/shorten`;
         console.log("URL:", url);
         const response = await fetch(url, {
             method: "POST",
