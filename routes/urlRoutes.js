@@ -15,7 +15,7 @@ router.post("/shorten", async (req, res) => {
             url = new Url({ longUrl, shortUrl });
             await url.save();
         }
-        res.json({ shortUrl: `${process.env.BASE_URL}api/${url.shortUrl}` });
+        res.json({ shortUrl: `${process.env.BASE_URL}/api/${url.shortUrl}` });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Server Error" });
