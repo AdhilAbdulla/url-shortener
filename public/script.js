@@ -1,4 +1,4 @@
-const API_URL = "https://url-shortener-gmbzd75sl-jerryy.vercel.app/api";
+const API_URL = "http://localhost:5000/api";
 
 async function shortenUrl() {
     const longUrl = document.getElementById("longUrl").value;
