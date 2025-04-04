@@ -1,4 +1,3 @@
-const API_URL = `${process.env.BASE_URL}`;
 
 async function shortenUrl() {
     const longUrl = document.getElementById("longUrl").value;
@@ -8,7 +7,7 @@ async function shortenUrl() {
     }
     
     try {
-        const response = await fetch(`${API_URL}/api/shorten`, {
+        const response = await fetch(`${process.env.BASE_URL}/api/shorten`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ longUrl })
